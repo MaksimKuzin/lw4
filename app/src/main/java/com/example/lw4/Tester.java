@@ -4,6 +4,6 @@ public class Tester {
     public int Id;
     public String FIO;
     public  float Experience;
-    public  String Stack;
+    public  String Phone;
     public int Age;
 }

@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">lw4</string>
+    <string name="id">Введите Id</string>
+    <string name="fio">Введите ФИО</string>
+    <string name="exp">Введите стаж</string>
+    <string name="stack">Введите телефон</string>
+    <string name="age">Введите возраст</string>
+    <string name="save">Сохранить</string>
+    <string name="idvw">Id:</string>
+    <string name="fiovw">ФИО:</string>
+    <string name="expvw">Стаж:</string>
+    <string name="stackvw">Телефон:</string>
+    <string name="agevw">Возраст:</string>
+    <string name="call">Позвонить</string>
+    <string name="sms">Отправить сообщение</string>
 </resources>

@@ -10,14 +10,14 @@
         android:id="@+id/idText"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:hint="Введите Id"
+        android:hint="@string/id"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <EditText
         android:id="@+id/FioText"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:hint="Введите ФИО"
+        android:hint="@string/fio"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="50dp"/>
@@ -26,15 +26,15 @@
         android:id="@+id/ExperienceText"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:hint="Введите стаж"
+        android:hint="@string/exp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="100dp"/>
     <EditText
-        android:id="@+id/StackText"
+        android:id="@+id/PhoneText"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:hint="Введите стэк"
+        android:hint="@string/stack"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="150dp"/>
@@ -42,7 +42,7 @@
         android:id="@+id/AgeText"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:hint="Введите возраст"
+        android:hint="@string/age"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="200dp"/>
@@ -50,14 +50,14 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Сохранить"
+        android:text="@string/save"
         app:layout_constraintLeft_toRightOf="@id/AgeText"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="250dp"
         android:onClick="SaveInstance"/>
     <TextView
         android:id="@+id/idTV"
-        android:text="Id: "
+        android:text="@string/idvw"
         android:textSize="21sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
         android:layout_marginTop="300dp"/>
     <TextView
         android:id="@+id/fioTV"
-        android:text="ФИО: "
+        android:text="@string/fiovw"
         android:textSize="21sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
         android:layout_marginTop="350dp"/>
     <TextView
         android:id="@+id/experienceTV"
-        android:text="Стаж: "
+        android:text="@string/expvw"
         android:textSize="21sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         android:layout_marginTop="400dp"/>
     <TextView
         android:id="@+id/stackTV"
-        android:text="Стэк: "
+        android:text="@string/stackvw"
         android:textSize="21sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
         android:layout_marginTop="450dp"/>
     <TextView
         android:id="@+id/ageTV"
-        android:text="Возраст: "
+        android:text="@string/agevw"
         android:textSize="21sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
