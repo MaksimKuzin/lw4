@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SmsActivity">
+
     <EditText
         android:id="@+id/smsPhoneET"
         android:layout_width="180dp"

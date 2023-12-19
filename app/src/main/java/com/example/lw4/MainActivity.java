@@ -1,14 +1,20 @@
 package com.example.lw4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.content.SharedPreferences;
+import android.widget.Toast;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     Tester tester = new Tester();
@@ -21,11 +27,15 @@ public class MainActivity extends AppCompatActivity {
     private static final String PREF_AGE = "Age";
     SharedPreferences settings;
     final static String nameVariableKey = "NAME_VARIABLE";
+
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         fioTV = findViewById(R.id.fioTV);
 
@@ -36,18 +46,20 @@ public class MainActivity extends AppCompatActivity {
         EditText expET = findViewById(R.id.ExperienceText);
         EditText stackET = findViewById(R.id.PhoneText);
         EditText ageET = findViewById(R.id.AgeText);
-        idET.setText(String.valueOf(settings.getInt(PREF_ID,0)));
-        fioET.setText(settings.getString(PREF_FIO,""));
-        expET.setText(String.valueOf(settings.getFloat(PREF_EXPERIENCE,0)));
-        stackET.setText(settings.getString(PREF_STACK,""));
-        ageET.setText(String.valueOf(settings.getInt(PREF_AGE,0)));
+        idET.setText(String.valueOf(settings.getInt(PREF_ID, 0)));
+        fioET.setText(settings.getString(PREF_FIO, ""));
+        expET.setText(String.valueOf(settings.getFloat(PREF_EXPERIENCE, 0)));
+        stackET.setText(settings.getString(PREF_STACK, ""));
+        ageET.setText(String.valueOf(settings.getInt(PREF_AGE, 0)));
     }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
 
         outState.putString(nameVariableKey, tester.FIO);
         super.onSaveInstanceState(outState);
     }
+
     // получение ранее сохраненного состояния
     @SuppressLint("SetTextI18n")
     @Override
@@ -57,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
         tester.FIO = savedInstanceState.getString(nameVariableKey);
         fioTV.setText("ФИО: " + tester.FIO);
     }
+
     @SuppressLint("SetTextI18n")
     public void SaveInstance(View view) {
         EditText id = findViewById(R.id.idText);
@@ -86,9 +99,32 @@ public class MainActivity extends AppCompatActivity {
         prefEditor.putString(PREF_STACK, tester.Phone);
         prefEditor.putInt(PREF_AGE, tester.Age);
         prefEditor.apply();
+    }
 
-        Intent intent = new Intent(this, SmsActivity.class);
-        intent.putExtra("tel", tester.Phone);
-        startActivity(intent);
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.open_activity) {
+            try {
+                if (!Objects.isNull(tester.Phone)) {
+                    Intent intent = new Intent(this, SmsActivity.class);
+                    intent.putExtra("tel", tester.Phone);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(this, "Сначала сохраните номер", Toast.LENGTH_SHORT).show();
+                }
+            } catch (Exception e) {
+                Toast.makeText(this, "Сначала сохраните номер", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
