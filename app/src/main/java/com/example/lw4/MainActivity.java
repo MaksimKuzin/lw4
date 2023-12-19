@@ -1,11 +1,13 @@
 package com.example.lw4;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +21,8 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
     Tester tester = new Tester();
     TextView fioTV;
+    private static final int REQUEST_CODE = 1;
+
     private static final String PREFS_FILE = "Account";
     private static final String PREF_ID = "Id";
     private static final String PREF_FIO = "Fio";
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!Objects.isNull(tester.Phone)) {
                     Intent intent = new Intent(this, SmsActivity.class);
                     intent.putExtra("tel", tester.Phone);
-                    startActivity(intent);
+                    startActivityForResult(intent, REQUEST_CODE);
                 } else {
                     Toast.makeText(this, "Сначала сохраните номер", Toast.LENGTH_SHORT).show();
                 }
@@ -126,5 +130,18 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == REQUEST_CODE) {
+            if (resultCode == RESULT_OK) {
+                Toast.makeText(this, "RESULT_OK", Toast.LENGTH_SHORT).show();
+            } else if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(this, "RESULT_CANCELED", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
